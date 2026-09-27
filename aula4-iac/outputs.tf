@@ -12,8 +12,3 @@ output "resource_group" {
   description = "Nome do resource group criado."
   value       = azurerm_resource_group.rg.name
 }
-
-output "aks_cluster_name" {
-  description = "Nome do cluster AKS criado pelo Terraform."
-  value       = azurerm_kubernetes_cluster.aks.name
-}
