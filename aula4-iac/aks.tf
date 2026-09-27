@@ -1,0 +1,20 @@
+# Cluster AKS equivalente às Aulas 2 e 3.
+resource "azurerm_kubernetes_cluster" "aks" {
+  name                = "aks-aula4"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  dns_prefix          = "aks-${var.dupla}"
+  sku_tier            = "Free"
+
+  default_node_pool {
+    name       = "nodepool1"
+    node_count = var.node_count
+    vm_size    = var.node_vm_size
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = local.tags
+}
